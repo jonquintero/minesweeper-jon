@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Game;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NewGameRequest extends FormRequest
@@ -13,7 +14,7 @@ class NewGameRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,24 @@ class NewGameRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'columns' => ['required', 'numeric', 'min:3'],
+            'rows' => ['required', 'numeric', 'min:3'],
+            'mines' => ['required', 'numeric', 'min:1'],
         ];
+    }
+
+    public function createNewGame()
+    {
+        $game = new Game();
+
+        $game->forceFill([
+            'num_columns' => $this->columns,
+            'num_rows' => $this->rows,
+            'num_mines' => $this->mines
+        ]);
+
+        $game->save();
+
+        return $game;
     }
 }
