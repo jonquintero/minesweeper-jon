@@ -298,6 +298,10 @@
                 });
 
             },
+            home(){
+                this.$router.push({name: 'home'});
+                location.reload();
+            },
 
 
 
