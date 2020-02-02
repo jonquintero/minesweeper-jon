@@ -89,4 +89,19 @@ class GameController extends Controller
 
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function saveGame($id)
+    {
+
+        $game = Game::find($id);
+        $game->is_saved = true;
+        $game->save();
+
+        return response()->json('game saved');
+
+    }
+
 }
