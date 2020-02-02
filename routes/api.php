@@ -22,3 +22,4 @@ Route::get('play-game/{id}', 'GameController@getGame');
 Route::post('set-mine/{id}', 'GameController@setMine');
 Route::get('get-mine/{id}', 'GameController@getMine');
 Route::post('revealed/{id}', 'GameController@revealedCell');
+Route::get('reset-revealed/{id}', 'GameController@resetRevealed');

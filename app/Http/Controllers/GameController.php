@@ -75,4 +75,18 @@ class GameController extends Controller
 
     }
 
+    /**
+     * @ApiDescription(delete in database all cells revealed in current game in case the page been refresh o reload)
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function resetRevealed($id)
+    {
+
+        RowColumnRevealed::where('game_id', '=', $id)->delete();
+
+        return response()->json('records destroy');
+
+    }
+
 }
