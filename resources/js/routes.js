@@ -1,7 +1,7 @@
 
 import NotFound from "./components/NotFound";
 
-import Grid from "./components/Grid";
+//import Grid from "./components/Grid";
 import CreateGame from "./components/CreateGame";
 
 export default {
@@ -20,12 +20,6 @@ export default {
             name: 'home',
             path: '/',
             component: CreateGame,
-
-        },
-        {
-            name: 'game',
-            path: '/play-game/:id',
-            component: Grid,
 
         },
 

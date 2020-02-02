@@ -98,7 +98,7 @@
                             this.errors = error.response.data
                         }
                     });
-              
+
             },
             initForm() {
                 this.errors = {};
