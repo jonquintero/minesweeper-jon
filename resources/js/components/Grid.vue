@@ -303,6 +303,28 @@
                 location.reload();
             },
 
+            refresh() {
+
+                let uri = `/api/reset-revealed/${this.$route.params.id}`;
+                this.axios.get(uri).then(() => {
+
+                });
+                window.onbeforeunload;
+
+
+            },
+
+            save() {
+                let uri = `/api/save/${this.$route.params.id}`;
+                this.axios.get(uri).then(() => {
+
+                });
+
+                return null
+
+
+            }
+
 
 
         }
