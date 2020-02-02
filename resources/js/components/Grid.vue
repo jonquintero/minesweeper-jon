@@ -107,9 +107,12 @@
 
         watch: {
             remainingCells(newValue) {
+                alert(newValue);
                 if (newValue === 0) {
-                    console.log('emmiting won');
+
                     EventBus.$emit('gameWon');
+                    alert('You won');
+                    setTimeout(this.home, 3000);
                 }
             }
 

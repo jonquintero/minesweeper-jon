@@ -44,6 +44,35 @@ class GameController extends Controller
     }
 
     /**
+     * @ApiDescription(save total mines and positions of the current game in case the game is saved)
+     * @param Request $request
+     * @param $id
+     */
+    public function setMine(Request $request, $id)
+    {
+        $totalMine = Game::select('num_mines')->where('id','=', $id)->first();
+
+
+
+        $totalSetMines = SetRandomMine::where('game_id','=', $id)->count();
+
+        if($totalSetMines < $totalMine->num_mines){
+            $mine = new SetRandomMine();
+
+            $mine->forceFill([
+                'game_id' => $id,
+                'row' => $request->x,
+                'column' => $request->y,
+                'mine' => $request->m,
+            ]);
+
+            $mine->save();
+        }
+
+    }
+
+
+    /**
      * @ApiDescription(return the totals mines from a game)
 
      * @param $id
