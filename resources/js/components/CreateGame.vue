@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">CREAR JUEGO</div>
+                    <div class="card-header">CREATE GAME</div>
 
                     <div class="card-body">
                         <form @submit.prevent="newGame">
@@ -98,7 +98,7 @@
                             this.errors = error.response.data
                         }
                     });
-                // EventBus.$emit('newGame');
+              
             },
             initForm() {
                 this.errors = {};
