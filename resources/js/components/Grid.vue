@@ -289,6 +289,15 @@
                 }, 1000);
 
             },
+            update: function (valor,id){
+                this.mute = true;
+                let uri = `/api/revealed/${this.$route.params.id}`;
+                window.axios.post(uri, {x: valor, y:id}).then(() => {
+
+                    this.mute = false;
+                });
+
+            },
 
 
 

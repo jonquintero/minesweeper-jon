@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Http\Requests\NewGameRequest;
+use App\RowColumnRevealed;
 use App\SetRandomMine;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -52,6 +53,26 @@ class GameController extends Controller
         $data = SetRandomMine::where('game_id', '=', $id)->get();
 
         return response()->json($data);
+    }
+
+    /**
+     * * @ApiDescription(save total cell revealed and positions of the current game in case the game is saved)
+     * @param Request $request
+     * @param $id
+     */
+    public function revealedCell(Request $request, $id)
+    {
+        $cell = new RowColumnRevealed();
+
+        $cell->forceFill([
+            'game_id' => $id,
+            'row' => $request->x,
+            'column' => $request->y,
+            'revealed' => true,
+        ]);
+
+        $cell->save();
+
     }
 
 }
